@@ -9,21 +9,21 @@ from statsmodels.stats.anova import AnovaRM
 
 
 base_url = 'https://homes.cs.washington.edu/~emjun/tea-lang/datasets/'
-uscrime_data_path = None
-states_path = None
-cats_path = None
-cholesterol_path = None
-soya_path = None
-co2_path = None
-exam_path = None
-liar_path = None
-pbcorr_path = None
-spider_path = None
-drug_path = None
-alcohol_path = None
-ecstasy_path = None
-goggles_path = None
-goggles_dummy_path = None
+uscrime_data_path = 0
+states_path = 1
+cats_path = 2
+cholesterol_path = 3
+soya_path = 4
+co2_path = 5
+exam_path = 6
+liar_path = 7
+pbcorr_path = 8
+spider_path = 9
+drug_path = 10
+alcohol_path = 11
+ecstasy_path = 12
+goggles_path = 13
+goggles_dummy_path = 14
 data_paths = [uscrime_data_path, states_path, cats_path, cholesterol_path, soya_path, co2_path, exam_path,
               liar_path, pbcorr_path, spider_path, drug_path, alcohol_path, ecstasy_path, goggles_path, goggles_dummy_path]
 file_names = ['UScrime.csv', 'statex77.csv', 'catsData.csv', 'cholesterol.csv', 'soya.csv', 'co2.csv', 'exam.csv', 'liar.csv',
@@ -35,8 +35,7 @@ def test_load_data():
 
     for i in range(len(data_paths)):
         csv_name = file_names[i]
-
-        csv_url = os.path.join(base_url, csv_name)
+        csv_url = os.path.join(base_url, csv_name) # Fetch individual spreadsheets 
         data_paths[i] = tea.download_data(csv_url, csv_name)
 
 
@@ -63,10 +62,10 @@ def all_cors(var_0, var_1):
 
 def test_all_corrs():
     tests = {
-        'pearson': "/Users/reide/.tea/data/statex77.csv",
-        'spearman': "/Users/reide/.tea/data/liar.csv",
-        'kendall': "/Users/reide/.tea/data/liar.csv",
-        'point_biserial': "/Users/reide/.tea/data/pbcorr.csv"
+        'pearson': data_paths[states_path],
+        'spearman': data_paths[liar_path],
+        'kendall': data_paths[liar_path],
+        'point_biserial': data_paths[pbcorr_path]
     }
 
     test_vars = {
@@ -77,11 +76,11 @@ def test_all_corrs():
     }
 
     try:
-        open("evals/Statsmodel/Outputs/correlation_tests.txt", "w").close()
+        open("./Outputs/correlation_tests.txt", "w").close()
     except:
         pass # File not yet created, no need to overwrite it 
 
-    with open("evals/Statsmodel/Outputs/correlation_tests.txt", "a") as f:
+    with open("./Outputs/correlation_tests.txt", "a") as f:
         for tutorial_test, file_path in tests.items():
             df = pd.read_csv(file_path)
 
@@ -126,10 +125,10 @@ def all_bivariate(group_0, group_1):
 
 def test_all_bivariate():
     tests = {
-        'students_t': "/Users/reide/.tea/data/UScrime.csv",
-        'paired_t': "/Users/reide/.tea/data/spiderLong.csv",
-        'wilcoxon_signed_rank': "/Users/reide/.tea/data/alcohol.csv",
-        'welchs': "/Users/reide/.tea/data/UScrime.csv"
+        'students_t': data_paths[uscrime_data_path],
+        'paired_t': data_paths[spider_path],
+        'wilcoxon_signed_rank': data_paths[alcohol_path],
+        'welchs': data_paths[uscrime_data_path]
     }
 
     test_vars = {
@@ -140,11 +139,11 @@ def test_all_bivariate():
     }
 
     try:
-        open("evals/Statsmodel/Outputs/bivariate_tests.txt", "w").close()
+        open("./Outputs/bivariate_tests.txt", "w").close()
     except:
         pass # File not yet created, no need to overwrite it 
 
-    with open("evals/Statsmodel/Outputs/bivariate_tests.txt", "a") as f:
+    with open("./Outputs/bivariate_tests.txt", "a") as f:
         for tutorial_test, file_path in tests.items():
             df = pd.read_csv(file_path)
 
@@ -296,11 +295,11 @@ def all_multivariate(xs, y, key, df):
 
 def test_all_multivariate():
     tests = {
-        'f_test': "/Users/reide/.tea/data/cholesterol.csv",
-        'kruskall_wallis': "/Users/reide/.tea/data/soya.csv",
-        'rm_one_way': "/Users/reide/.tea/data/co2.csv",
-        'factorial_anova': "/Users/reide/.tea/data/gogglesData.csv",
-        'two_way_anova': "/Users/reide/.tea/data/co2.csv"
+        'f_test': data_paths[cholesterol_path],
+        'kruskall_wallis': data_paths[soya_path],
+        'rm_one_way': data_paths[co2_path],
+        'factorial_anova': data_paths[goggles_path],
+        'two_way_anova': data_paths[co2_path]
     }
 
     # Y var comes at the end!
@@ -313,11 +312,11 @@ def test_all_multivariate():
     }
 
     try:
-        open("evals/Statsmodel/Outputs/multivariate_tests.txt", "w").close()
+        open("./Outputs/multivariate_tests.txt", "w").close()
     except:
         pass # File not yet created, no need to overwrite it 
 
-    with open("evals/Statsmodel/Outputs/multivariate_tests.txt", "a") as f:
+    with open("./Outputs/multivariate_tests.txt", "a") as f:
         for tutorial_test, file_path in tests.items():
             df = pd.read_csv(file_path)
 
@@ -375,7 +374,7 @@ def all_proportions(var_0, var_1, df):
 
 def test_proportions():
     tests = {
-        'chi_square': "/Users/reide/.tea/data/catsData.csv"
+        'chi_square': data_paths[cats_path]
     }
 
     test_vars = {
@@ -383,11 +382,11 @@ def test_proportions():
     }
 
     try:
-        open("evals/Statsmodel/Outputs/proportions_tests.txt", "w").close()
+        open("./Outputs/proportions_tests.txt", "w").close()
     except:
         pass # File not yet created, no need to overwrite it 
 
-    with open("evals/Statsmodel/Outputs/proportions_tests.txt", "a") as f:
+    with open("./Outputs/proportions_tests.txt", "a") as f:
         for tutorial_test, file_path in tests.items():
             df = pd.read_csv(file_path)
 
@@ -407,7 +406,9 @@ def test_proportions():
             f.write('\n')
 
 if __name__ == "__main__":
-    # test_load_data()
+    # Ensure user is in /scripts/Stats_Model before executing statsmodel.py
+
+    test_load_data() # Must run in order to create path resolution
     # test_all_corrs() 
     # test_all_bivariate()
     # test_all_multivariate()
