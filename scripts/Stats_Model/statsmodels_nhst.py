@@ -76,11 +76,11 @@ def test_all_corrs():
     }
 
     try:
-        open("./Outputs/correlation_tests.txt", "w").close()
+        open("../outputs/raw/Correlations/stats_model_correlation_tests.txt", "w").close()
     except:
         pass # File not yet created, no need to overwrite it 
 
-    with open("./Outputs/correlation_tests.txt", "a") as f:
+    with open("../outputs/raw/Correlations/stats_model_correlation_tests.txt", "a") as f:
         for tutorial_test, file_path in tests.items():
             df = pd.read_csv(file_path)
 
@@ -139,11 +139,11 @@ def test_all_bivariate():
     }
 
     try:
-        open("./Outputs/bivariate_tests.txt", "w").close()
+        open("../outputs/raw/Bivariate/stats_model_bivariate_tests.txt", "w").close()
     except:
         pass # File not yet created, no need to overwrite it 
 
-    with open("./Outputs/bivariate_tests.txt", "a") as f:
+    with open("../outputs/raw/Bivariate/stats_model_bivariate_tests.txt", "a") as f:
         for tutorial_test, file_path in tests.items():
             df = pd.read_csv(file_path)
 
@@ -275,7 +275,7 @@ def all_multivariate(xs, y, key, df):
     if len(xs) == 1:
         x_name = xs[0]
 
-        results['f_test'] = f_test(x_name, y, df).to_json()
+        results['f_test'] = f_test(x_name, y, df).to_json() # TODO: test without to_json conversion
 
     # Factorial ANOVA
     results['factorial_ANOVA'] = factorial(xs, y, df).to_json()
@@ -312,11 +312,11 @@ def test_all_multivariate():
     }
 
     try:
-        open("./Outputs/multivariate_tests.txt", "w").close()
+        open("../outputs/raw/Multivariate/stats_model_multivariate_tests.txt", "w").close()
     except:
         pass # File not yet created, no need to overwrite it 
 
-    with open("./Outputs/multivariate_tests.txt", "a") as f:
+    with open("../outputs/raw/Multivariate/stats_model_multivariate_tests.txt", "a") as f:
         for tutorial_test, file_path in tests.items():
             df = pd.read_csv(file_path)
 
@@ -382,11 +382,11 @@ def test_proportions():
     }
 
     try:
-        open("./Outputs/proportions_tests.txt", "w").close()
+        open("../outputs/raw/Proportions/stats_model_proportions_tests.txt", "w").close()
     except:
         pass # File not yet created, no need to overwrite it 
 
-    with open("./Outputs/proportions_tests.txt", "a") as f:
+    with open("../outputs/raw/Proportions/stats_model_proportions_tests.txt", "a") as f:
         for tutorial_test, file_path in tests.items():
             df = pd.read_csv(file_path)
 
