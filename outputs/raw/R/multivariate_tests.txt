@@ -1,0 +1,48 @@
+
+	F test to compare two variances
+
+data:  process_data("co2")$conc and process_data("co2")$uptake
+F = 748.78, num df = 83, denom df = 83, p-value < 2.2e-16
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+  485.5146 1154.8018
+sample estimates:
+ratio of variances 
+          748.7811 
+
+Call:
+   aov(formula = conc ~ uptake + Plant, data = process_data("co2"))
+
+Terms:
+                 uptake   Plant Residuals
+Sum of Squares  1710960 1717121   3840319
+Deg. of Freedom       1      11        71
+
+Residual standard error: 232.5704
+Estimated effects may be unbalanced
+Call:
+   aov(formula = conc ~ uptake + Plant, data = process_data("co2"))
+
+Terms:
+                 uptake   Plant Residuals
+Sum of Squares  1710960 1717121   3840319
+Deg. of Freedom       1      11        71
+
+Residual standard error: 232.5704
+Estimated effects may be unbalanced
+Call:
+   aov(formula = conc ~ Type * uptake, data = process_data("co2"))
+
+Terms:
+                   Type  uptake Type:uptake Residuals
+Sum of Squares        0 2619002       22992   4626406
+Deg. of Freedom       1       1           1        80
+
+Residual standard error: 240.4788
+Estimated effects may be unbalanced
+
+	Kruskal-Wallis rank sum test
+
+data:  Sperm by Soya
+Kruskal-Wallis chi-squared = 8.6589, df = 3, p-value = 0.03419
+

@@ -1,0 +1,96 @@
+
+	Pearson's product-moment correlation
+
+data:  process_data("statex77")$Illiteracy and process_data("statex77")$Life.Exp
+t = -5.0427, df = 48, p-value = 6.969e-06
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.7448226 -0.3708811
+sample estimates:
+       cor 
+-0.5884779 
+
+
+	Pearson's product-moment correlation
+
+data:  process_data("liar")$Position and process_data("liar")$Creativity
+t = -2.6115, df = 66, p-value = 0.01115
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.50743150 -0.07292754
+sample estimates:
+       cor 
+-0.3060314 
+
+
+	Pearson's product-moment correlation
+
+data:  process_data("pbcorr")$time and process_data("pbcorr")$gender
+t = 3.1138, df = 58, p-value = 0.002868
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.137769 0.576936
+sample estimates:
+      cor 
+0.3784542 
+
+
+	Kendall's rank correlation tau
+
+data:  process_data("statex77")$Illiteracy and process_data("statex77")$Life.Exp
+z = -4.2603, p-value = 2.042e-05
+alternative hypothesis: true tau is not equal to 0
+sample estimates:
+      tau 
+-0.428521 
+
+
+	Kendall's rank correlation tau
+
+data:  process_data("liar")$Position and process_data("liar")$Creativity
+z = -3.2252, p-value = 0.001259
+alternative hypothesis: true tau is not equal to 0
+sample estimates:
+       tau 
+-0.3002413 
+
+
+	Kendall's rank correlation tau
+
+data:  process_data("pbcorr")$time and process_data("pbcorr")$gender
+z = 2.7621, p-value = 0.005742
+alternative hypothesis: true tau is not equal to 0
+sample estimates:
+      tau 
+0.3025739 
+
+
+	Spearman's rank correlation rho
+
+data:  process_data("statex77")$Illiteracy and process_data("statex77")$Life.Exp
+S = 32391, p-value = 2.836e-05
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.5553735 
+
+
+	Spearman's rank correlation rho
+
+data:  process_data("liar")$Position and process_data("liar")$Creativity
+S = 71948, p-value = 0.00172
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.3732184 
+
+
+	Spearman's rank correlation rho
+
+data:  process_data("pbcorr")$time and process_data("pbcorr")$gender
+S = 23048, p-value = 0.004774
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.3596003 
+
