@@ -1,14 +1,14 @@
 
 	F test to compare two variances
 
-data:  process_data("co2")$conc and process_data("co2")$uptake
-F = 748.78, num df = 83, denom df = 83, p-value < 2.2e-16
+data:  drugD and drugE
+F = 1.0666, num df = 9, denom df = 9, p-value = 0.925
 alternative hypothesis: true ratio of variances is not equal to 1
 95 percent confidence interval:
-  485.5146 1154.8018
+ 0.2649345 4.2942251
 sample estimates:
 ratio of variances 
-          748.7811 
+          1.066625 
 
 Call:
    aov(formula = conc ~ uptake + Plant, data = process_data("co2"))
@@ -21,14 +21,14 @@ Deg. of Freedom       1      11        71
 Residual standard error: 232.5704
 Estimated effects may be unbalanced
 Call:
-   aov(formula = conc ~ uptake + Plant, data = process_data("co2"))
+   aov(formula = attractiveness ~ alcohol + gender, data = process_data("gogglesData"))
 
 Terms:
-                 uptake   Plant Residuals
-Sum of Squares  1710960 1717121   3840319
-Deg. of Freedom       1      11        71
+                 alcohol   gender Residuals
+Sum of Squares  3332.292  168.750  5465.625
+Deg. of Freedom        2        1        44
 
-Residual standard error: 232.5704
+Residual standard error: 11.14535
 Estimated effects may be unbalanced
 Call:
    aov(formula = conc ~ Type * uptake, data = process_data("co2"))

@@ -1,3 +1,4 @@
+install.packages("onewaytests")
 dir.create("./Output")
 process_data <- function(filename) {
   filename <- read.csv(paste('https://homes.cs.washington.edu/~emjun/tea-lang/datasets/', filename,'.csv', sep=""))
@@ -6,8 +7,8 @@ process_data <- function(filename) {
 }
 
 all_cors <- function() {
-  tests <- c("pearson", "kendall", "spearman") #point-biserial is equivalent to pearson
-  for (val in tests) {
+    tests <- c("pearson", "kendall", "spearman") #point-biserial is equivalent to pearson
+    for (val in tests) {
     res <- cor.test(process_data("statex77")$Illiteracy, process_data("statex77")$Life.Exp, method = val)
     capture.output(res, file = "./Output/correlation_tests.txt", append = T )
     res <- cor.test(process_data("liar")$Position, process_data("liar")$Creativity, method=val)
@@ -43,7 +44,7 @@ all_bivariate <- function() {
   capture.output(res_wilcoxon, file = "./Output/bivariate_tests.txt", append = T)
   capture.output(res_welch, file = "./Output/bivariate_tests.txt", append = T)
   capture.output(res_mann, file = "./Output/bivariate_tests.txt", append = T)
-
+  
 }
 
 all_multivariate <- function() {
@@ -66,12 +67,13 @@ all_multivariate <- function() {
 }
 
 all_proportions <- function() {
-  chi_square <- chisq.test(process_data("catsData")$Training, process_data("catsData")$Dance, correct = FALSE)
+  chi_square <- nor.test(process_data("catsData")$Training ~ process_data("catsData")$Dance, method = "PT")
   fishers <- fisher.test(process_data("catsData")$Training, process_data("catsData")$Dance)
   capture.output(chi_square, file = "./Output/proportion_tests.txt", append)
   capture.output(fishers, file = "./Output/proportion_tests.txt", append = TRUE)
 }
-all_cors()
-all_bivariate()
-all_multivariate()
-all_proportions()
+#all_cors()
+#all_bivariate()
+#all_multivariate()
+#all_proportions()
+chi_square <- nor.test(process_data("catsData")$Training ~ process_data("catsData")$Dance, method = "PT")
