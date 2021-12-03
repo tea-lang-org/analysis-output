@@ -1,0 +1,17 @@
+
+	Pearson's Chi-squared test
+
+data:  process_data("catsData")$Training and process_data("catsData")$Dance
+X-squared = 25.356, df = 1, p-value = 4.767e-07
+
+	Fisher's Exact Test for Count Data
+
+data:  process_data("catsData")$Training and process_data("catsData")$Dance
+p-value = 1.312e-06
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.06086544 0.35238897
+sample estimates:
+odds ratio 
+ 0.1519927 
+

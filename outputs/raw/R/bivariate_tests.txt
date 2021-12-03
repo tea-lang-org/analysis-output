@@ -1,0 +1,50 @@
+
+	Two Sample t-test
+
+data:  So and Prob
+t = 4.1938, df = 92, p-value = 6.306e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1544186 0.4322497
+sample estimates:
+ mean of x  mean of y 
+0.34042553 0.04709138 
+
+
+	Paired t-test
+
+data:  picture and spider
+t = -2.4725, df = 11, p-value = 0.03098
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -13.2312185  -0.7687815
+sample estimates:
+mean of the differences 
+                     -7 
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  sunday and wednesday
+W = 84, p-value = 0.01121
+alternative hypothesis: true location shift is not equal to 0
+
+
+	Welch Two Sample t-test
+
+data:  So and Prob
+t = 4.1938, df = 46.207, p-value = 0.0001229
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1525605 0.4341078
+sample estimates:
+ mean of x  mean of y 
+0.34042553 0.04709138 
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  sunday and wednesday
+W = 84, p-value = 0.01121
+alternative hypothesis: true location shift is not equal to 0
+

@@ -1,0 +1,48 @@
+
+	F test to compare two variances
+
+data:  drugD and drugE
+F = 1.0666, num df = 9, denom df = 9, p-value = 0.925
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.2649345 4.2942251
+sample estimates:
+ratio of variances 
+          1.066625 
+
+Call:
+   aov(formula = conc ~ uptake + Plant, data = process_data("co2"))
+
+Terms:
+                 uptake   Plant Residuals
+Sum of Squares  1710960 1717121   3840319
+Deg. of Freedom       1      11        71
+
+Residual standard error: 232.5704
+Estimated effects may be unbalanced
+Call:
+   aov(formula = attractiveness ~ alcohol + gender, data = process_data("gogglesData"))
+
+Terms:
+                 alcohol   gender Residuals
+Sum of Squares  3332.292  168.750  5465.625
+Deg. of Freedom        2        1        44
+
+Residual standard error: 11.14535
+Estimated effects may be unbalanced
+Call:
+   aov(formula = conc ~ Type * uptake, data = process_data("co2"))
+
+Terms:
+                   Type  uptake Type:uptake Residuals
+Sum of Squares        0 2619002       22992   4626406
+Deg. of Freedom       1       1           1        80
+
+Residual standard error: 240.4788
+Estimated effects may be unbalanced
+
+	Kruskal-Wallis rank sum test
+
+data:  Sperm by Soya
+Kruskal-Wallis chi-squared = 8.6589, df = 3, p-value = 0.03419
+
