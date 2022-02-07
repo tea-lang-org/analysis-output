@@ -1,0 +1,68 @@
+﻿New Table( "pbcorr",
+	Add Rows( 60 ),
+	New Script(
+		"Source",
+		Open(
+			"$DOCUMENTS/IDL/Analysis_Output_JMP/Tea Data/data/pbcorr.csv",
+			columns(
+				New Column( "time", Numeric, "Continuous", Format( "Best", 12 ) ),
+				New Column( "gender", Numeric, "Continuous", Format( "Best", 12 ) ),
+				New Column( "recode", Numeric, "Continuous", Format( "Best", 12 ) )
+			),
+			Import Settings(
+				End Of Line( CRLF, CR, LF ),
+				End Of Field( Comma, CSV( 1 ) ),
+				Strip Quotes( 0 ),
+				Use Apostrophe as Quotation Mark( 0 ),
+				Use Regional Settings( 0 ),
+				Scan Whole File( 1 ),
+				Treat empty columns as numeric( 0 ),
+				CompressNumericColumns( 0 ),
+				CompressCharacterColumns( 0 ),
+				CompressAllowListCheck( 0 ),
+				Labels( 1 ),
+				Column Names Start( 1 ),
+				Data Starts( 2 ),
+				Lines To Read( "All" ),
+				Year Rule( "20xx" )
+			)
+		)
+	),
+	New Column( "time",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[41, 40, 40, 38, 34, 46, 42, 42, 47, 42, 45, 46, 44, 54, 57, 51, 51, 50,
+			53, 53, 45, 46, 36, 34, 31, 50, 51, 54, 52, 54, 54, 52, 35, 32, 40, 40,
+			52, 47, 52, 52, 52, 51, 51, 45, 43, 48, 32, 33, 32, 33, 33, 34, 33, 34,
+			35, 35, 35, 34, 34, 40]
+		)
+	),
+	New Column( "gender",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0,
+			0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		)
+	),
+	New Column( "recode",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1,
+			1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+		)
+	)
+) << Run Formulas;
+Multivariate(
+	Y( :time, :gender ),
+	Estimation Method( "Row-wise" ),
+	Scatterplot Matrix( 1 ),
+	Pairwise Correlations( 1 )
+);

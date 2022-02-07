@@ -1,0 +1,74 @@
+﻿New Table( "alcohol",
+	Add Rows( 20 ),
+	New Script(
+		"Source",
+		Open(
+			"$DOCUMENTS/IDL/Analysis_Output_JMP/Tea Data/data/alcohol.csv",
+			columns(
+				New Column( "Column 1",
+					Numeric,
+					"Continuous",
+					Format( "Best", 12 )
+				),
+				New Column( "drug", Character, "Nominal" ),
+				New Column( "day", Character, "Nominal" ),
+				New Column( "value", Numeric, "Continuous", Format( "Best", 12 ) )
+			),
+			Import Settings(
+				End Of Line( CRLF, CR, LF ),
+				End Of Field( Comma, CSV( 1 ) ),
+				Strip Quotes( 0 ),
+				Use Apostrophe as Quotation Mark( 0 ),
+				Use Regional Settings( 0 ),
+				Scan Whole File( 1 ),
+				Treat empty columns as numeric( 0 ),
+				CompressNumericColumns( 0 ),
+				CompressCharacterColumns( 0 ),
+				CompressAllowListCheck( 0 ),
+				Labels( 1 ),
+				Column Names Start( 1 ),
+				Data Starts( 2 ),
+				Lines To Read( "All" ),
+				Year Rule( "20xx" )
+			)
+		)
+	),
+	New Column( "Column 1",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		)
+	),
+	New Column( "drug",
+		Character,
+		"Nominal",
+		Set Values(
+			{"Alcohol", "Alcohol", "Alcohol", "Alcohol", "Alcohol", "Alcohol",
+			"Alcohol", "Alcohol", "Alcohol", "Alcohol", "Alcohol", "Alcohol",
+			"Alcohol", "Alcohol", "Alcohol", "Alcohol", "Alcohol", "Alcohol",
+			"Alcohol", "Alcohol"}
+		)
+	),
+	New Column( "day",
+		Character,
+		"Nominal",
+		Set Values(
+			{"sundayBDI", "sundayBDI", "sundayBDI", "sundayBDI", "sundayBDI",
+			"sundayBDI", "sundayBDI", "sundayBDI", "sundayBDI", "sundayBDI",
+			"wedsBDI", "wedsBDI", "wedsBDI", "wedsBDI", "wedsBDI", "wedsBDI",
+			"wedsBDI", "wedsBDI", "wedsBDI", "wedsBDI"}
+		)
+	),
+	New Column( "value",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[16, 15, 20, 15, 16, 13, 14, 19, 18, 18, 5, 6, 30, 8, 9, 7, 6, 17, 3, 10
+			]
+		)
+	)
+) << Run Formulas;
+Oneway( Y( :value ), X( :day ), Wilcoxon Test( 1 ) );

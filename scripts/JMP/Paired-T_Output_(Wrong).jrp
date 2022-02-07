@@ -1,0 +1,61 @@
+﻿New Table( "spiderLong",
+	Add Rows( 24 ),
+	New Script(
+		"Source",
+		Open(
+			"$DOCUMENTS/IDL/Analysis_Output_JMP/Tea Data/data/spiderLong.csv",
+			columns(
+				New Column( "id", Numeric, "Continuous", Format( "Best", 12 ) ),
+				New Column( "Group", Character, "Nominal" ),
+				New Column( "Anxiety", Numeric, "Continuous", Format( "Best", 12 ) )
+			),
+			Import Settings(
+				End Of Line( CRLF, CR, LF ),
+				End Of Field( Comma, CSV( 1 ) ),
+				Strip Quotes( 0 ),
+				Use Apostrophe as Quotation Mark( 0 ),
+				Use Regional Settings( 0 ),
+				Scan Whole File( 1 ),
+				Treat empty columns as numeric( 0 ),
+				CompressNumericColumns( 0 ),
+				CompressCharacterColumns( 0 ),
+				CompressAllowListCheck( 0 ),
+				Labels( 1 ),
+				Column Names Start( 1 ),
+				Data Starts( 2 ),
+				Lines To Read( "All" ),
+				Year Rule( "20xx" )
+			)
+		)
+	),
+	New Column( "id",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24]
+		)
+	),
+	New Column( "Group",
+		Character,
+		"Nominal",
+		Set Values(
+			{"Picture", "Picture", "Picture", "Picture", "Picture", "Picture",
+			"Picture", "Picture", "Picture", "Picture", "Picture", "Picture",
+			"Real Spider", "Real Spider", "Real Spider", "Real Spider",
+			"Real Spider", "Real Spider", "Real Spider", "Real Spider",
+			"Real Spider", "Real Spider", "Real Spider", "Real Spider"}
+		)
+	),
+	New Column( "Anxiety",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[30, 35, 45, 40, 50, 35, 55, 25, 30, 45, 40, 50, 40, 35, 50, 55, 65, 55,
+			50, 35, 30, 50, 60, 39]
+		)
+	)
+) << Run Formulas;
+Oneway( Y( :Anxiety ), X( :Group ), t Test( 1 ) );
