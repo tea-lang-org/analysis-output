@@ -1,0 +1,101 @@
+﻿New Table( "gogglesData",
+	Add Rows( 48 ),
+	New Script(
+		"Source",
+		Open(
+			"$DOCUMENTS/IDL/Analysis_Output_JMP/Tea Data/data/gogglesData.csv",
+			columns(
+				New Column( "Column 1",
+					Numeric,
+					"Continuous",
+					Format( "Best", 12 )
+				),
+				New Column( "gender", Character, "Nominal" ),
+				New Column( "alcohol", Character, "Nominal" ),
+				New Column( "attractiveness",
+					Numeric,
+					"Continuous",
+					Format( "Best", 12 )
+				)
+			),
+			Import Settings(
+				End Of Line( CRLF, CR, LF ),
+				End Of Field( Comma, CSV( 1 ) ),
+				Strip Quotes( 0 ),
+				Use Apostrophe as Quotation Mark( 0 ),
+				Use Regional Settings( 0 ),
+				Scan Whole File( 1 ),
+				Treat empty columns as numeric( 0 ),
+				CompressNumericColumns( 0 ),
+				CompressCharacterColumns( 0 ),
+				CompressAllowListCheck( 0 ),
+				Labels( 1 ),
+				Column Names Start( 1 ),
+				Data Starts( 2 ),
+				Lines To Read( "All" ),
+				Year Rule( "20xx" )
+			)
+		)
+	),
+	New Column( "Column 1",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
+		)
+	),
+	New Column( "gender",
+		Character,
+		"Nominal",
+		Set Values(
+			{"Female", "Female", "Female", "Female", "Female", "Female", "Female",
+			"Female", "Female", "Female", "Female", "Female", "Female", "Female",
+			"Female", "Female", "Female", "Female", "Female", "Female", "Female",
+			"Female", "Female", "Female", "Male", "Male", "Male", "Male", "Male",
+			"Male", "Male", "Male", "Male", "Male", "Male", "Male", "Male", "Male",
+			"Male", "Male", "Male", "Male", "Male", "Male", "Male", "Male", "Male",
+			"Male"}
+		)
+	),
+	New Column( "alcohol",
+		Character,
+		"Nominal",
+		Set Values(
+			{"None", "None", "None", "None", "None", "None", "None", "None",
+			"2 Pints", "2 Pints", "2 Pints", "2 Pints", "2 Pints", "2 Pints",
+			"2 Pints", "2 Pints", "4 Pints", "4 Pints", "4 Pints", "4 Pints",
+			"4 Pints", "4 Pints", "4 Pints", "4 Pints", "None", "None", "None",
+			"None", "None", "None", "None", "None", "2 Pints", "2 Pints", "2 Pints",
+			"2 Pints", "2 Pints", "2 Pints", "2 Pints", "2 Pints", "4 Pints",
+			"4 Pints", "4 Pints", "4 Pints", "4 Pints", "4 Pints", "4 Pints",
+			"4 Pints"}
+		)
+	),
+	New Column( "attractiveness",
+		Numeric,
+		"Continuous",
+		Format( "Best", 12 ),
+		Set Values(
+			[65, 70, 60, 60, 60, 55, 60, 55, 70, 65, 60, 70, 65, 60, 60, 50, 55, 65,
+			70, 55, 55, 60, 50, 50, 50, 55, 80, 65, 70, 75, 75, 65, 45, 60, 85, 65,
+			70, 70, 80, 60, 30, 30, 30, 55, 35, 20, 45, 40]
+		)
+	)
+) << Run Formulas;
+Fit Model(
+	Y( :attractiveness ),
+	Effects( :gender, :alcohol, :gender * :alcohol ),
+	Personality( "Standard Least Squares" ),
+	Emphasis( "Effect Leverage" ),
+	Run(
+		:attractiveness << {Summary of Fit( 1 ), Analysis of Variance( 1 ),
+		Parameter Estimates( 1 ), Lack of Fit( 0 ), Scaled Estimates( 0 ),
+		Plot Actual by Predicted( 1 ), Plot Regression( 0 ),
+		Plot Residual by Predicted( 1 ), Plot Studentized Residuals( 0 ),
+		Plot Effect Leverage( 1 ), Plot Residual by Normal Quantiles( 0 ),
+		Box Cox Y Transformation( 0 )}
+	)
+);
