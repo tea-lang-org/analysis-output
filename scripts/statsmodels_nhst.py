@@ -219,6 +219,7 @@ def factorial(xs, y, df):
 def kruskall_wallis(xs, y, df):
     results = {}
     if len(xs) == 1:
+        print(xs)
         for x in xs:
             data = []
             groups = df[x].unique()
@@ -411,5 +412,5 @@ if __name__ == "__main__":
     test_load_data() # Must run in order to create path resolution
     # test_all_corrs() 
     # test_all_bivariate()
-    # test_all_multivariate()
-    test_proportions()
+    test_all_multivariate()
+    # test_proportions()
